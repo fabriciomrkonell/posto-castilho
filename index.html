@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta name="viewport" content="width=device-width, initial scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8">
+    <title>POSTO CASTILHO 2.0</title>
+    <meta property="og:description" content="POSTO CASTILHO 2.0">
+    <meta property="og:image" content="fotos/original.JPG">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <style type="text/css">
+    .content {
+      text-shadow: white 2px 2px 2px;
+      text-align: center;
+      font-size: 3.5em;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body onLoad="atualizaContador()">
+  <img src='' id='imagem-aqui' class="content" style="width: 100%">
+  <div class="content" id="contador"></div>
+  <script type="text/javascript">
+      var YY = 2018;
+var MM = 08;
+var DD = 09;
+var HH = 00;
+var MI = 00;
+var SS = 00;
+function atualizaContador()
+{
+var hoje = new Date();
+var futuro = new Date(YY,MM-1,DD,HH,MI,SS);
+var ss = parseInt((futuro - hoje) / 1000);
+var mm = parseInt(ss / 60);
+var hh = parseInt(mm / 60);
+var dd = parseInt(hh / 24);
+ss = ss - (mm * 60);
+mm = mm - (hh * 60);
+hh = hh - (dd * 24);
+var faltam = '';
+faltam += (dd && dd > 1) ? dd+' dias, ' : (dd==1 ? '1 dia, ' : '');
+faltam += (toString(hh).length) ? hh+' hr, ' : '';
+faltam += (toString(mm).length) ? mm+' min e ' : '';
+faltam += ss+' seg';
+ if (dd+hh+mm+ss > 0)
+ {
+  document.getElementById('contador').innerHTML = faltam;
+  setTimeout(atualizaContador,1000);
+ }
+ else
+ {
+  document.getElementById('contador').innerHTML = 'CHEGOU!!!!';
+  setTimeout(atualizaContador,1000);
+ }
+}
+document.getElementById('imagem-aqui').src = 'fotos/' + new Date().getDate() + '.JPG';
+  </script>
+</body>
+</html>
