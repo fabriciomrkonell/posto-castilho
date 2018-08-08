@@ -61,7 +61,16 @@ faltam += ss+' seg';
   setTimeout(atualizaContador,1000);
  }
 }
-document.getElementById('imagem-aqui').src = 'fotos/' + new Date().getDate() + '.JPG';
+
+var count = 0;
+setInterval(function(){
+  count = count + 1;
+ document.getElementById('imagem-aqui').src = 'fotos/' + count + '.jpeg';
+ if(count === 8){
+  count = 0;
+ }
+}, 1000)
+
   </script>
 </body>
 </html>
